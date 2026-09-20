@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>InlineHookKit - توثيق المشروع</title>
+    <title>InlineHookKit - التوثيق الرسمي للمشروع</title>
 
     <style>
         * {
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -20,21 +24,26 @@
         }
 
         header {
-            background: #17202a;
+            background: linear-gradient(135deg, #17202a, #273746);
             color: white;
-            padding: 45px 20px;
+            padding: 55px 20px;
             text-align: center;
         }
 
         header h1 {
-            margin: 0 0 10px;
-            font-size: 38px;
+            margin: 0 0 12px;
+            font-size: 42px;
         }
 
         header p {
-            margin: 5px 0;
-            font-size: 18px;
+            margin: 6px 0;
+            font-size: 19px;
             color: #d5d8dc;
+        }
+
+        .subtitle {
+            max-width: 800px;
+            margin: 15px auto 0;
         }
 
         nav {
@@ -43,16 +52,18 @@
             text-align: center;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 8px;
-            padding: 7px 10px;
+            margin: 4px;
+            padding: 8px 12px;
             display: inline-block;
-            border-radius: 5px;
+            border-radius: 6px;
+            transition: 0.2s;
         }
 
         nav a:hover {
@@ -60,7 +71,7 @@
         }
 
         main {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 30px auto;
             padding: 0 20px;
         }
@@ -69,19 +80,23 @@
             background: white;
             margin-bottom: 25px;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
         }
 
         h2 {
             color: #1f618d;
             border-bottom: 2px solid #d6eaf8;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             margin-top: 0;
         }
 
         h3 {
             color: #2874a6;
+        }
+
+        p {
+            margin: 12px 0;
         }
 
         .hero {
@@ -92,31 +107,39 @@
             display: inline-block;
             background: #d5f5e3;
             color: #196f3d;
-            padding: 7px 16px;
+            padding: 7px 18px;
             border-radius: 20px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 12px;
+        }
+
+        .warning,
+        .info,
+        .success,
+        .danger {
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 7px;
         }
 
         .warning {
             background: #fef9e7;
             border-right: 5px solid #f1c40f;
-            padding: 18px;
-            margin: 20px 0;
         }
 
         .info {
             background: #ebf5fb;
             border-right: 5px solid #3498db;
-            padding: 18px;
-            margin: 20px 0;
         }
 
         .success {
             background: #eafaf1;
             border-right: 5px solid #27ae60;
-            padding: 18px;
-            margin: 20px 0;
+        }
+
+        .danger {
+            background: #fdedec;
+            border-right: 5px solid #e74c3c;
         }
 
         pre {
@@ -127,21 +150,25 @@
             padding: 18px;
             border-radius: 7px;
             overflow-x: auto;
-            font-family: Consolas, monospace;
+            font-family: Consolas, "Courier New", monospace;
+            line-height: 1.6;
         }
 
         code {
-            font-family: Consolas, monospace;
+            font-family: Consolas, "Courier New", monospace;
+            direction: ltr;
         }
 
         .command {
             background: #1e1e1e;
             color: #ffffff;
-            padding: 12px 16px;
+            padding: 13px 17px;
             border-radius: 6px;
             direction: ltr;
             text-align: left;
             margin: 10px 0;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
         }
 
         table {
@@ -172,14 +199,16 @@
             background: #f8f9f9;
             padding: 25px;
             border-radius: 8px;
-            font-family: Consolas, monospace;
+            font-family: Consolas, "Courier New", monospace;
             white-space: pre-line;
+            overflow-x: auto;
         }
 
         .status-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
+            margin-top: 15px;
         }
 
         .status-card {
@@ -192,16 +221,29 @@
 
         .status-card strong {
             display: block;
-            font-size: 25px;
+            font-size: 27px;
             color: #1f618d;
         }
 
-        footer {
-            background: #17202a;
-            color: #d5d8dc;
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .flow-item {
+            background: #ebf5fb;
+            border: 1px solid #aed6f1;
+            border-radius: 8px;
+            padding: 15px;
             text-align: center;
-            padding: 30px 15px;
-            margin-top: 40px;
+            font-weight: bold;
+        }
+
+        .file-tree {
+            direction: ltr;
+            text-align: left;
         }
 
         ul {
@@ -212,9 +254,32 @@
             margin-bottom: 8px;
         }
 
+        .top-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .top-link a {
+            color: #1f618d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #17202a;
+            color: #d5d8dc;
+            text-align: center;
+            padding: 35px 15px;
+            margin-top: 40px;
+        }
+
         @media (max-width: 700px) {
             header h1 {
-                font-size: 28px;
+                font-size: 30px;
+            }
+
+            header p {
+                font-size: 16px;
             }
 
             section {
@@ -232,91 +297,215 @@
 <body>
 
 <header id="top">
+
     <h1>InlineHookKit</h1>
-    <p>أداة تعليمية لمحاكاة Inline Hook باستخدام Python</p>
+
+    <p>أداة تعليمية لمحاكاة مفهوم Inline Hook باستخدام Python</p>
+
+    <p class="subtitle">
+        مشروع عملي في مجال الأمن السيبراني يركز على فهم دورة حياة
+        الـ Hook والـ Patching وإدارة الحالة والاختبارات من خلال
+        بيئة محاكاة آمنة.
+    </p>
+
     <span class="badge">الإصدار 0.1.0</span>
+
 </header>
 
 <nav>
+
     <a href="#overview">نبذة</a>
+    <a href="#problem">المشكلة</a>
+    <a href="#objectives">الأهداف</a>
     <a href="#architecture">المعمارية</a>
-    <a href="#structure">هيكل المشروع</a>
+    <a href="#structure">الهيكل</a>
+    <a href="#components">المكونات</a>
     <a href="#configuration">الإعدادات</a>
     <a href="#usage">التشغيل</a>
+    <a href="#lifecycle">دورة الحياة</a>
+    <a href="#state">حفظ الحالة</a>
     <a href="#testing">الاختبارات</a>
     <a href="#security">الأمان</a>
+    <a href="#requirements">المتطلبات</a>
     <a href="#future">التطوير</a>
+
 </nav>
 
 <main>
 
+    <!-- نبذة -->
+
     <section id="overview" class="hero">
-        <h2>نبذة عن المشروع</h2>
+
+        <h2>1. نبذة عن المشروع</h2>
 
         <p>
             InlineHookKit هو مشروع تعليمي عملي مكتوب بلغة Python،
-            يهدف إلى شرح مفهوم Inline Hooking من خلال بيئة محاكاة
-            آمنة داخل البرنامج.
+            تم تصميمه لدراسة مفهوم Inline Hooking بطريقة آمنة
+            وقابلة للاختبار.
         </p>
 
         <p>
-            يوفر المشروع دورة كاملة لمحاكاة عملية تثبيت Hook،
-            والتحقق منه، وحفظ حالته، ثم إزالته واستعادة البيانات الأصلية.
+            يعتمد المشروع على بيئة محاكاة داخل البرنامج بدلًا من
+            تعديل ذاكرة نظام التشغيل أو ذاكرة عملية خارجية.
         </p>
 
         <div class="warning">
+
             <strong>تنبيه مهم:</strong>
-            النسخة الحالية لا تعدل ذاكرة نظام التشغيل الحقيقية
-            ولا تعدل ذاكرة عمليات خارجية. جميع عمليات الذاكرة والـ Patch
-            تتم داخل بيئة محاكاة تعليمية.
+
+            <p>
+                النسخة الحالية من المشروع لا تقوم بتعديل ذاكرة نظام
+                التشغيل الحقيقية، ولا تقوم بحقن كود داخل عمليات خارجية،
+                ولا تنفذ Hook حقيقي على برامج أخرى.
+            </p>
+
+            <p>
+                جميع عمليات الذاكرة والـ Patch الموجودة في المشروع
+                هي عمليات محاكاة تعليمية داخل البرنامج نفسه.
+            </p>
+
         </div>
+
     </section>
 
-    <section>
-        <h2>أهداف المشروع</h2>
+
+    <!-- المشكلة -->
+
+    <section id="problem">
+
+        <h2>2. المشكلة التي يحلها المشروع</h2>
+
+        <p>
+            دراسة مفهوم Inline Hooking تحتاج إلى فهم عدة مراحل مترابطة،
+            مثل تحديد الهدف، تجهيز البيانات، تطبيق التعديل، التحقق من
+            نجاحه، ثم استعادة الحالة الأصلية.
+        </p>
+
+        <p>
+            تنفيذ هذه العمليات مباشرة على ذاكرة نظام حقيقي قد يكون
+            معقدًا وخطيرًا بالنسبة لبيئة تعليمية.
+        </p>
+
+        <p>
+            لذلك يقدم المشروع نموذجًا محاكيًا يسمح بدراسة الفكرة
+            الأساسية دون إجراء تعديلات على عمليات خارجية.
+        </p>
+
+        <div class="info">
+
+            <strong>الحل:</strong>
+
+            بناء بيئة محاكاة تحتوي على منطقة ذاكرة افتراضية،
+            وبيانات أصلية، وبيانات بديلة، وعمليات Patch،
+            ونظام للتحقق من الحالة وحفظها.
+
+        </div>
+
+    </section>
+
+
+    <!-- الأهداف -->
+
+    <section id="objectives">
+
+        <h2>3. أهداف المشروع</h2>
 
         <ul>
-            <li>فهم مفهوم Inline Hook.</li>
+
+            <li>فهم المفهوم الأساسي للـ Inline Hook.</li>
+
             <li>محاكاة عملية تعديل البيانات داخل الذاكرة.</li>
-            <li>تطبيق مفهوم Patch والتحقق منه.</li>
+
+            <li>تطبيق مفهوم Patch بطريقة منظمة.</li>
+
+            <li>التحقق من نجاح عملية تطبيق الـ Patch.</li>
+
             <li>استعادة البيانات الأصلية عند إزالة الـ Hook.</li>
+
             <li>حفظ حالة المحاكاة بين عمليات التشغيل.</li>
-            <li>توفير واجهة سطر أوامر CLI.</li>
-            <li>معالجة الأخطاء بطريقة منظمة.</li>
-            <li>اختبار مكونات المشروع بشكل مستقل.</li>
-            <li>توفير مشروع قابل للتطوير مستقبلًا.</li>
+
+            <li>توفير واجهة سطر أوامر CLI سهلة الاستخدام.</li>
+
+            <li>تطبيق معالجة منظمة للأخطاء.</li>
+
+            <li>اختبار المكونات بشكل مستقل.</li>
+
+            <li>توفير تصميم قابل للتوسعة مستقبلًا.</li>
+
         </ul>
+
     </section>
 
+
+    <!-- المعمارية -->
+
     <section id="architecture">
-        <h2>معمارية المشروع</h2>
+
+        <h2>4. معمارية المشروع</h2>
 
         <div class="architecture">
+
 CLI
         ↓
 Configuration
         ↓
 Hook Engine
         ↓
-┌───────────────┬───────────────┬───────────────┐
-│ Hook Model    │ Memory        │ Patching      │
-└───────────────┴───────────────┴───────────────┘
+┌────────────────┬────────────────┬────────────────┐
+│ Hook Model     │ Memory Manager │ Patch Applier  │
+└────────────────┴────────────────┴────────────────┘
         ↓
 State Store
         ↓
 JSON State File
+
         </div>
 
         <p>
-            يقوم محرك المشروع بربط المكونات المختلفة وإدارة دورة حياة
-            الـ Hook من خلال أوامر CLI.
+            يعمل <code>HookEngine</code> كمحور رئيسي ينسق بين
+            الإعدادات ونموذج الـ Hook والذاكرة المحاكاة وعمليات
+            الـ Patch وحفظ الحالة.
         </p>
+
+        <div class="flow">
+
+            <div class="flow-item">
+                واجهة CLI
+            </div>
+
+            <div class="flow-item">
+                الإعدادات
+            </div>
+
+            <div class="flow-item">
+                محرك الـ Hook
+            </div>
+
+            <div class="flow-item">
+                الذاكرة المحاكاة
+            </div>
+
+            <div class="flow-item">
+                تطبيق الـ Patch
+            </div>
+
+            <div class="flow-item">
+                حفظ الحالة
+            </div>
+
+        </div>
+
     </section>
 
-    <section id="structure">
-        <h2>هيكل المشروع</h2>
 
-        <pre>
+    <!-- الهيكل -->
+
+    <section id="structure">
+
+        <h2>5. هيكل المشروع</h2>
+
+        <pre class="file-tree">
 InlineHookKit3/
 │
 ├── main.py
@@ -336,6 +525,7 @@ InlineHookKit3/
 │   └── state.py
 │
 ├── tests/
+│   ├── __init__.py
 │   ├── test_cli.py
 │   ├── test_config.py
 │   ├── test_engine.py
@@ -343,7 +533,8 @@ InlineHookKit3/
 │   ├── test_memory.py
 │   ├── test_models.py
 │   ├── test_patching.py
-│   └── test_state.py
+│   ├── test_state.py
+│   └── test_validation.py
 │
 ├── examples/
 │   └── safe_demo.py
@@ -357,20 +548,39 @@ InlineHookKit3/
 ├── README.md
 └── .gitignore
         </pre>
+
+        <div class="info">
+
+            <strong>ملاحظة:</strong>
+
+            مجلد <code>__pycache__</code> وملفات
+            <code>.pyc</code> ملفات مؤقتة ينشئها Python أثناء التشغيل،
+            وليست جزءًا من الكود الأساسي للمشروع.
+
+        </div>
+
     </section>
 
-    <section>
-        <h2>مكونات المشروع</h2>
+
+    <!-- المكونات -->
+
+    <section id="components">
+
+        <h2>6. مكونات المشروع</h2>
 
         <table>
+
             <thead>
+
                 <tr>
                     <th>الملف</th>
                     <th>المسؤولية</th>
                 </tr>
+
             </thead>
 
             <tbody>
+
                 <tr>
                     <td>main.py</td>
                     <td>نقطة تشغيل البرنامج.</td>
@@ -388,17 +598,17 @@ InlineHookKit3/
 
                 <tr>
                     <td>models.py</td>
-                    <td>تعريف نموذج وحالة الـ Hook.</td>
+                    <td>تعريف نموذج الـ Hook وحالاته.</td>
                 </tr>
 
                 <tr>
                     <td>memory.py</td>
-                    <td>إدارة الذاكرة المحاكاة.</td>
+                    <td>إدارة منطقة الذاكرة المحاكاة وصلاحياتها.</td>
                 </tr>
 
                 <tr>
                     <td>patching.py</td>
-                    <td>تطبيق Patch والتحقق منه واستعادته.</td>
+                    <td>تطبيق الـ Patch والتحقق منه واستعادته.</td>
                 </tr>
 
                 <tr>
@@ -408,7 +618,7 @@ InlineHookKit3/
 
                 <tr>
                     <td>state.py</td>
-                    <td>حفظ واستعادة حالة المحاكاة.</td>
+                    <td>حفظ واستعادة الحالة المنطقية للمحاكاة.</td>
                 </tr>
 
                 <tr>
@@ -418,22 +628,30 @@ InlineHookKit3/
 
                 <tr>
                     <td>logging_utils.py</td>
-                    <td>إدارة تسجيل الأحداث.</td>
+                    <td>إدارة إعدادات تسجيل الأحداث.</td>
                 </tr>
 
                 <tr>
                     <td>manager.py</td>
-                    <td>إدارة مجموعة الـ Hooks.</td>
+                    <td>إدارة الـ Hooks ضمن طبقة الإدارة.</td>
                 </tr>
+
             </tbody>
+
         </table>
+
     </section>
 
+
+    <!-- الإعدادات -->
+
     <section id="configuration">
-        <h2>ملف الإعدادات</h2>
+
+        <h2>7. ملف الإعدادات</h2>
 
         <p>
-            يستخدم المشروع ملف <code>config.toml</code> لإدارة الإعدادات.
+            يستخدم المشروع ملف <code>config.toml</code> لتحديد
+            إعدادات التشغيل والـ Hook.
         </p>
 
         <pre>
@@ -452,101 +670,136 @@ target = "target_function"
 replacement = "replacement_function"
         </pre>
 
-        <h3>أهم الإعدادات</h3>
+        <h3>الإعدادات الرئيسية</h3>
 
-        <ul>
-            <li>
-                <strong>log_level:</strong>
-                مستوى تسجيل الأحداث.
-            </li>
+        <table>
 
-            <li>
-                <strong>dry_run:</strong>
-                تشغيل المحاكاة الآمنة.
-            </li>
+            <thead>
 
-            <li>
-                <strong>state_file:</strong>
-                مسار ملف حفظ الحالة.
-            </li>
+                <tr>
+                    <th>الإعداد</th>
+                    <th>الوظيفة</th>
+                </tr>
 
-            <li>
-                <strong>name:</strong>
-                اسم الـ Hook.
-            </li>
+            </thead>
 
-            <li>
-                <strong>target:</strong>
-                الهدف المحاكى.
-            </li>
+            <tbody>
 
-            <li>
-                <strong>replacement:</strong>
-                الاستبدال المحاكى.
-            </li>
-        </ul>
+                <tr>
+                    <td>log_level</td>
+                    <td>تحديد مستوى تسجيل الأحداث.</td>
+                </tr>
+
+                <tr>
+                    <td>dry_run</td>
+                    <td>تفعيل بيئة المحاكاة الآمنة.</td>
+                </tr>
+
+                <tr>
+                    <td>state_file</td>
+                    <td>تحديد مكان تخزين الحالة المحاكاة.</td>
+                </tr>
+
+                <tr>
+                    <td>name</td>
+                    <td>اسم الـ Hook المحاكى.</td>
+                </tr>
+
+                <tr>
+                    <td>target</td>
+                    <td>الهدف المحاكى.</td>
+                </tr>
+
+                <tr>
+                    <td>replacement</td>
+                    <td>الاستبدال المحاكى.</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
     </section>
 
+
+    <!-- التشغيل -->
+
     <section id="usage">
-        <h2>طريقة التشغيل</h2>
+
+        <h2>8. طريقة التشغيل</h2>
 
         <p>
-            افتح Terminal داخل مجلد المشروع ثم نفذ الأوامر التالية.
+            يتم تشغيل المشروع من Terminal داخل مجلد المشروع.
         </p>
 
         <h3>عرض المساعدة</h3>
 
         <div class="command">
-            python main.py --help
+python main.py --help
         </div>
 
         <h3>عرض الإصدار</h3>
 
         <div class="command">
-            python main.py --version
+python main.py --version
         </div>
 
         <h3>فحص إعدادات الـ Hook</h3>
 
         <div class="command">
-            python main.py inspect
+python main.py inspect
         </div>
 
         <h3>تثبيت الـ Hook المحاكى</h3>
 
         <div class="command">
-            python main.py install
+python main.py install
         </div>
 
         <h3>عرض الحالة</h3>
 
         <div class="command">
-            python main.py status
+python main.py status
         </div>
 
-        <h3>إزالة الـ Hook</h3>
+        <h3>إزالة الـ Hook المحاكى</h3>
 
         <div class="command">
-            python main.py remove
+python main.py remove
         </div>
 
         <h3>استخدام ملف إعدادات محدد</h3>
 
         <div class="command">
-            python main.py --config config.toml status
+python main.py --config config.toml status
         </div>
 
         <h3>تحديد مستوى التسجيل</h3>
 
         <div class="command">
-            python main.py --log-level INFO status
+python main.py --log-level INFO status
         </div>
+
+        <div class="info">
+
+            <strong>ملاحظة:</strong>
+
+            يجب تشغيل الأوامر من مجلد المشروع حتى يتم العثور على
+            ملفات الإعدادات والمسارات النسبية بالشكل المتوقع.
+
+        </div>
+
     </section>
 
-    <section>
-        <h2>دورة حياة الـ Hook</h2>
+
+    <!-- دورة الحياة -->
+
+    <section id="lifecycle">
+
+        <h2>9. دورة حياة الـ Hook</h2>
 
         <div class="architecture">
+
 NOT_INSTALLED
        │
        │ install
@@ -556,33 +809,94 @@ INSTALLED
        │ remove
        ▼
 REMOVED
+
         </div>
 
-        <p>
-            أثناء عملية التثبيت يتم إنشاء منطقة ذاكرة محاكاة،
-            ثم كتابة البيانات الأصلية وتطبيق البيانات البديلة.
-            بعد ذلك يتم التحقق من نجاح العملية.
-        </p>
+        <h3>مرحلة التثبيت</h3>
 
-        <p>
-            عند الإزالة تتم استعادة البيانات الأصلية والتحقق من نجاح
-            عملية الاستعادة.
-        </p>
+        <ol>
+
+            <li>قراءة إعدادات الـ Hook.</li>
+
+            <li>إنشاء منطقة ذاكرة محاكاة.</li>
+
+            <li>كتابة البيانات الأصلية.</li>
+
+            <li>إنشاء Patch محاكى.</li>
+
+            <li>تطبيق البيانات البديلة.</li>
+
+            <li>التحقق من نجاح عملية التطبيق.</li>
+
+            <li>حفظ حالة العملية.</li>
+
+        </ol>
+
+        <h3>مرحلة الإزالة</h3>
+
+        <ol>
+
+            <li>التحقق من حالة الـ Hook.</li>
+
+            <li>استعادة البيانات الأصلية عند توفر الذاكرة المحاكاة.</li>
+
+            <li>التحقق من الاستعادة.</li>
+
+            <li>تغيير الحالة إلى REMOVED.</li>
+
+            <li>حفظ الحالة الجديدة.</li>
+
+        </ol>
+
     </section>
 
+
+    <!-- البيانات -->
+
     <section>
-        <h2>حفظ الحالة</h2>
+
+        <h2>10. البيانات المحاكاة</h2>
 
         <p>
-            يستخدم المشروع <code>StateStore</code> لحفظ حالة المحاكاة
-            في ملف JSON.
+            يستخدم المشروع بيانات اختبار بسيطة لتوضيح عملية الـ Patch.
+        </p>
+
+        <h3>البيانات الأصلية</h3>
+
+        <pre>
+ORIGINAL
+        </pre>
+
+        <h3>البيانات البديلة</h3>
+
+        <pre>
+HOOK----
+        </pre>
+
+        <p>
+            حجم البيانات المستخدمة في المحاكاة هو 8 بايت،
+            مما يسمح باختبار عملية التعديل والاستعادة بشكل واضح.
+        </p>
+
+    </section>
+
+
+    <!-- الحالة -->
+
+    <section id="state">
+
+        <h2>11. حفظ حالة المحاكاة</h2>
+
+        <p>
+            يستخدم المشروع المكون <code>StateStore</code> لحفظ
+            الحالة المنطقية للمحاكاة في ملف JSON.
         </p>
 
         <pre>
 .inlinehook/state.json
         </pre>
 
-        <p>مثال:</p>
+        <h3>مثال على الحالة</h3>
 
         <pre>
 {
@@ -593,44 +907,40 @@ REMOVED
 }
         </pre>
 
-        <div class="info">
-            حفظ الحالة هنا يمثل الحالة المنطقية للمحاكاة فقط،
-            ولا يعني وجود Hook حقيقي دائم داخل ذاكرة نظام التشغيل.
+        <div class="warning">
+
+            <strong>مهم:</strong>
+
+            ملف الحالة لا يحفظ ذاكرة حقيقية ولا يجعل Hook حقيقيًا
+            مستمرًا بعد انتهاء البرنامج.
+
+            <br><br>
+
+            هو فقط يحفظ الحالة المنطقية للمحاكاة حتى تستطيع أوامر
+            CLI المختلفة قراءة حالة العملية السابقة.
+
         </div>
+
     </section>
 
-    <section>
-        <h2>مثال على البيانات المحاكاة</h2>
 
-        <p>البيانات الأصلية:</p>
-
-        <pre>
-ORIGINAL
-        </pre>
-
-        <p>بعد تطبيق الـ Patch:</p>
-
-        <pre>
-HOOK----
-        </pre>
-
-        <p>
-            يتم التحقق من أن البيانات البديلة تم تطبيقها،
-            ثم عند الإزالة تتم استعادة البيانات الأصلية.
-        </p>
-    </section>
+    <!-- الاختبارات -->
 
     <section id="testing">
-        <h2>الاختبارات</h2>
+
+        <h2>12. الاختبارات</h2>
 
         <p>
-            يحتوي المشروع على اختبارات آلية تغطي المكونات الأساسية.
+            يحتوي المشروع على مجموعة اختبارات آلية للتحقق من عمل
+            المكونات الأساسية بشكل مستقل ومتكامل.
         </p>
 
         <div class="success">
-            <strong>نتيجة الاختبارات الحالية:</strong>
+
+            <strong>نتيجة الاختبارات التي تم التحقق منها:</strong>
 
             <div class="status-grid">
+
                 <div class="status-card">
                     <strong>84</strong>
                     اختبار
@@ -645,211 +955,9 @@ HOOK----
                     <strong>OK</strong>
                     النتيجة
                 </div>
+
             </div>
+
         </div>
 
-        <h3>تشغيل الاختبارات</h3>
-
-        <div class="command">
-            python -m unittest discover -v
-        </div>
-
-        <p>النتيجة الحالية:</p>
-
-        <pre>
-----------------------------------------------------------------------
-Ran 84 tests in 0.523s
-
-OK
-        </pre>
-
-        <p>
-            تشمل الاختبارات CLI والإعدادات والمحرك والنماذج والذاكرة
-            والـ Patching وإدارة الحالة.
-        </p>
-    </section>
-
-    <section>
-        <h2>معالجة الأخطاء</h2>
-
-        <p>
-            يحتوي المشروع على نظام أخطاء منظم للتعامل مع الحالات
-            غير الصحيحة.
-        </p>
-
-        <ul>
-            <li>ملف إعدادات غير موجود.</li>
-            <li>ملف حالة غير صالح.</li>
-            <li>بيانات إعدادات غير صحيحة.</li>
-            <li>محاولة تثبيت Hook مثبت مسبقًا.</li>
-            <li>محاولة إزالة Hook غير مثبت.</li>
-            <li>الوصول إلى منطقة ذاكرة خارج حدودها.</li>
-            <li>الكتابة إلى منطقة ذاكرة غير قابلة للكتابة.</li>
-            <li>بيانات Patch غير صحيحة.</li>
-        </ul>
-    </section>
-
-    <section id="security">
-        <h2>الجانب الأمني</h2>
-
-        <p>
-            يرتبط المشروع بمجال الأمن السيبراني من خلال دراسة
-            مفهوم Inline Hooking وآليات تعديل التنفيذ.
-        </p>
-
-        <p>
-            تساعد المحاكاة على فهم مفاهيم مهمة مثل:
-        </p>
-
-        <ul>
-            <li>تحليل البرمجيات.</li>
-            <li>الهندسة العكسية.</li>
-            <li>تعديل البيانات.</li>
-            <li>Patch Verification.</li>
-            <li>استعادة البيانات الأصلية.</li>
-            <li>دورة حياة الـ Hook.</li>
-            <li>آليات الحماية والكشف.</li>
-        </ul>
-
-        <div class="warning">
-            التطبيق الحالي يستخدم محاكاة آمنة ولا يقوم بتعديل ذاكرة
-            عمليات خارجية.
-        </div>
-    </section>
-
-    <section>
-        <h2>لماذا تم استخدام المحاكاة؟</h2>
-
-        <ul>
-            <li>توفير بيئة آمنة للتجربة.</li>
-            <li>تسهيل الاختبارات الآلية.</li>
-            <li>تقليل الاعتماد على نظام تشغيل محدد.</li>
-            <li>تسهيل فهم الفكرة للطالب.</li>
-            <li>منع التعديل غير المقصود على عمليات النظام.</li>
-            <li>التركيز على التصميم البرمجي ودورة حياة الـ Hook.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>المتطلبات الأكاديمية</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>المتطلب</th>
-                    <th>الحالة</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>Python</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>مشروع عملي قابل للتنفيذ</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>واجهة CLI</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>--help</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>--version</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>--config</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>--log-level</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>معالجة الأخطاء</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>الاختبارات</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>التوثيق</td>
-                    <td>متحقق</td>
-                </tr>
-
-                <tr>
-                    <td>الجانب الأمني</td>
-                    <td>متحقق</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="future">
-        <h2>التطوير المستقبلي</h2>
-
-        <p>
-            يمكن تطوير المشروع مستقبلًا من خلال:
-        </p>
-
-        <ul>
-            <li>دعم أكثر من Hook.</li>
-            <li>تطوير تقارير HTML.</li>
-            <li>إضافة واجهة رسومية.</li>
-            <li>إضافة تقارير أكثر تفصيلًا.</li>
-            <li>زيادة تغطية الاختبارات.</li>
-            <li>إضافة آليات تحقق أكثر قوة.</li>
-            <li>إضافة خصائص مراقبة وتحليل متقدمة.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>الخلاصة</h2>
-
-        <p>
-            InlineHookKit هو مشروع تعليمي عملي يطبق مفهوم Inline Hook
-            من خلال بيئة محاكاة آمنة.
-        </p>
-
-        <p>
-            يجمع المشروع بين Python وCLI وإدارة الإعدادات ومحاكاة
-            الذاكرة والـ Patching وحفظ الحالة والاختبارات ومعالجة الأخطاء.
-        </p>
-
-        <div class="success">
-            <strong>الحالة الحالية للمشروع:</strong>
-
-            <ul>
-                <li>الإصدار: 0.1.0</li>
-                <li>نوع التنفيذ: محاكاة آمنة</li>
-                <li>الاختبارات: 84</li>
-                <li>الاختبارات الفاشلة: 0</li>
-                <li>النتيجة: OK</li>
-            </ul>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <p>InlineHookKit — توثيق المشروع</p>
-    <p>مشروع تعليمي في مجال الأمن السيبراني</p>
-</footer>
-
-</body>
-</html>
+        <
