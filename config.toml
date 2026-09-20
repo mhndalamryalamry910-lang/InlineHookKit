@@ -1,0 +1,13 @@
+[project]
+name = "InlineHookKit"
+version = "0.1.0"
+
+[runtime]
+log_level = "INFO"
+dry_run = true
+state_file = ".inlinehook/state.json"
+
+[hook]
+name = "demo_hook"
+target = "target_function"
+replacement = "replacement_function"
